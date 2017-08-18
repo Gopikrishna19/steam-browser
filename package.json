@@ -1,0 +1,11 @@
+{
+  "name": "steam-browser",
+  "version": "0.0.0",
+  "description": "Custom steam apps organizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gopikrishna Sathyamurthy",
+  "license": "MIT"
+}
