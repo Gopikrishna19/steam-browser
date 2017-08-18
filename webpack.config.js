@@ -51,12 +51,16 @@ module.exports = env => {
     config.devServer = {
       contentBase: './',
       hot: true,
-      open: true,
       port: 8080,
       stats: "minimal"
     };
 
   }
+
+  config.plugins.push(new Webpack.DefinePlugin({
+    API_KEY: `"${env.key}"`,
+    USER_ID: `"${env.user}"`
+  }));
 
   return config;
 
