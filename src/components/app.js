@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {getOwnedGames} from '../services/get-owned-games';
 import {Games} from './games';
 
 export class App extends Component {

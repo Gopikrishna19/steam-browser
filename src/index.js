@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {App} from './components/app';
 import './index.scss';
+import {AppProvider} from './provider';
 
 const container = document.querySelector('main#content');
 
-ReactDOM.render(<App/>, container);
+ReactDOM.render(<AppProvider/>, container);
