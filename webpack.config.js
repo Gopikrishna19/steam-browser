@@ -1,10 +1,12 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const Webpack = require('webpack');
+const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
 const config = {
   entry: ['./src'],
+  externals: nodeExternals(),
   module: {
     rules: [
       {
@@ -36,24 +38,11 @@ const config = {
       favicon: './src/favicon.ico'
     }),
     new ExtractTextPlugin('index.css')
-  ]
+  ],
+  target: 'node'
 };
 
 module.exports = env => {
-  if (env && env.dev) {
-    config.entry.unshift('webpack-dev-server/client?http://localhost:8080/');
-    config.plugins.unshift(new Webpack.HotModuleReplacementPlugin());
-
-    config.devtool = 'source-map';
-
-    config.devServer = {
-      contentBase: './',
-      hot: true,
-      port: 8080,
-      stats: "minimal"
-    };
-  }
-
   config.plugins.push(new Webpack.DefinePlugin({
     'global.API_KEY': `"${env.apiKey}"`,
     'global.STEAM_ID': `${env.steamId}`

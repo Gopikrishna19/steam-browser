@@ -1,13 +1,6 @@
-const basePath = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/';
-const header = new Headers({
-  'Access-Control-Allow-Origin': '*',
-  'Content-Type': 'application/json'
-});
+const request = require('request');
 
-const options = {
-  mode: 'cors',
-  header
-};
+const basePath = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/';
 
 const buildQueryString = query => Object.keys(query)
   .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(query[k]))
@@ -24,5 +17,15 @@ export const getOwnedGames = () => {
   const queryString = buildQueryString(query);
   const url = `${basePath}?${queryString}`;
 
-  return fetch(url, options).then(response => response.json());
+  return new Promise((resolve, reject) => {
+    request.get(
+      url,
+      function (error, steamHttpResponse, steamHttpBody) {
+        if (error) {
+          reject(error);
+        } else {
+          resolve(JSON.parse(steamHttpBody));
+        }
+      });
+  });
 };
