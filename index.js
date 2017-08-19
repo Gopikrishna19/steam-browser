@@ -10,15 +10,11 @@ const createWindow = () => {
     width: 1920
   });
 
-  const index = url.format({
+  window.loadURL(url.format({
     pathname: path.join(__dirname, 'dist', 'index.html'),
     protocol: 'file',
     slashes: true
-  });
-
-  console.log(index);
-
-  window.loadURL(index);
+  }));
 
   window.on('closed', () => {
     window = null;
