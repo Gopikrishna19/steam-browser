@@ -24,7 +24,7 @@ const createWindow = () => {
     window = null;
   });
 
-  if (process.env.MODE === 'dev') {
+  if (process.env.MODE.trim() === 'dev') {
     const watch = require('node-watch');
     watch(path.join(__dirname, 'dist'), {recursive: true}, () => {
       window.reload();
