@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {getOwnedGames} from '../services/get-owned-games';
+import {Games} from './games';
 
 export class App extends Component {
   constructor() {
@@ -17,6 +18,7 @@ export class App extends Component {
   render() {
     return (
       <div>
+        <Games games={this.state.games}/>
       </div>
     );
   }
