@@ -1,7 +1,8 @@
 import actions from '../actions';
 
 const handlers = {
-  [actions.SET_STEAM_ID]: (state, action) => action.steamId
+  [actions.CLEAR_USER_CREDENTIALS]: (state, action) => '',
+  [actions.SET_USER_CREDENTIALS]: (state, action) => action.steamId
 };
 
 export default function (state = '', action) {

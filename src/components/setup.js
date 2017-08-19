@@ -1,24 +1,30 @@
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import styles from './setup.scss';
 
 export class Setup extends Component {
-  constructor() {
+  constructor(props) {
     super();
 
     this.state = {
-      apiKey: '',
-      steamId: ''
+      apiKey: props.apiKey,
+      steamId: props.steamId
     };
 
-    this.handleSteamIdChange = this.handleSteamIdChange.bind(this);
     this.handleApiKeyChange = this.handleApiKeyChange.bind(this);
+    this.handleSaveButtonClick = this.handleSaveButtonClick.bind(this);
+    this.handleSteamIdChange = this.handleSteamIdChange.bind(this);
   }
 
   handleApiKeyChange(event) {
     this.setState({apiKey: event.target.value});
   }
 
-  handleSteamIdChange() {
+  handleSaveButtonClick() {
+    this.props.saveUserCredentials(this.state);
+  }
+
+  handleSteamIdChange(event) {
     this.setState({steamId: event.target.value});
   }
 
@@ -27,24 +33,25 @@ export class Setup extends Component {
       <section className={styles.form}>
         <h1>Setup</h1>
         <div className={styles.formContainer}>
-          <div>
-            <input
-              type="text"
-              placeholder="Steam ID"
-              value={this.state.steamId}
-              onChange={this.handleSteamIdChange}
-            />
-          </div>
-          <div>
-            <input
-              type="text"
-              placeholder="API Key"
-              value={this.state.apiKey}
-              onChange={this.handleApiKeyChange}
-            />
-          </div>
+          <input
+            type="text"
+            placeholder="Steam ID"
+            value={this.state.steamId}
+            onChange={this.handleSteamIdChange}
+          />
+          <input
+            type="text"
+            placeholder="API Key"
+            value={this.state.apiKey}
+            onChange={this.handleApiKeyChange}
+          />
           <div className={styles.buttonContainer}>
-            <button className={styles.button}>Save</button>
+            <button
+              className={styles.button}
+              onClick={this.handleSaveButtonClick}
+            >
+              Save
+            </button>
           </div>
         </div>
       </section>
@@ -53,3 +60,8 @@ export class Setup extends Component {
 }
 
 Setup.displayName = 'Setup';
+Setup.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  saveUserCredentials: PropTypes.func.isRequired,
+  steamId: PropTypes.string.isRequired
+};

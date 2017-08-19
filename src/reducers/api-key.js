@@ -1,7 +1,8 @@
 import actions from '../actions';
 
 const handlers = {
-  [actions.SET_API_KEY]: (state, action) => action.apiKey
+  [actions.CLEAR_USER_CREDENTIALS]: (state, action) => '',
+  [actions.SET_USER_CREDENTIALS]: (state, action) => action.apiKey
 };
 
 export default function (state = '', action) {
