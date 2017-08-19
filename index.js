@@ -11,7 +11,7 @@ const createWindow = () => {
   });
 
   const index = url.format({
-    pathname: path.join(__dirname, 'dist',  'index.html'),
+    pathname: path.join(__dirname, 'dist', 'index.html'),
     protocol: 'file',
     slashes: true
   });
@@ -23,6 +23,13 @@ const createWindow = () => {
   window.on('closed', () => {
     window = null;
   });
+
+  if (process.env.MODE === 'dev') {
+    const watch = require('node-watch');
+    watch(path.join(__dirname, 'dist'), {recursive: true}, () => {
+      window.reload();
+    });
+  }
 };
 
 app.on('ready', createWindow);
