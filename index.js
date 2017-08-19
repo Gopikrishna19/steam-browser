@@ -7,8 +7,7 @@ let window;
 const createWindow = () => {
   window = new BrowserWindow({
     height: 1080,
-    width: 1920,
-    frame: false
+    width: 1920
   });
 
   const index = url.format({
