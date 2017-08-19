@@ -1,27 +1,14 @@
-import React, {Component} from 'react';
-import {Games} from './games';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-export class App extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      games: []
-    };
-  }
-
-  componentWillMount() {
-    // getOwnedGames().then(data => this.setState({games: data.response.games}));
-  }
-
-  render() {
-    return (
-      <div>
-        <h1>My Steam Games!!</h1>
-        <Games games={this.state.games}/>
-      </div>
-    );
-  }
-}
+export const App = props =>
+  <div>
+    {props.apiKey && props.steamId ? 'Ready to load' : 'Setup needed'}
+  </div>;
 
 App.displayName = 'App';
+App.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  steamId: PropTypes.string.isRequired
+};
+

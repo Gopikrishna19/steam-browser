@@ -1,12 +1,14 @@
 import React from 'react';
 import {Provider} from 'react-redux';
-import {App} from './components/app';
+import {AppContainer} from './connectors/app';
+
 import {getStore} from './store';
 
 export const AppProvider = () =>
   <Provider store={getStore()}>
-    <App/>
+    <AppContainer/>
   </Provider>;
+;
 
 AppProvider.displayName = 'AppProvider';
 
