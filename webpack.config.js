@@ -55,8 +55,8 @@ module.exports = env => {
   }
 
   config.plugins.push(new Webpack.DefinePlugin({
-    'global.API_KEY': `"${env.key}"`,
-    'global.USER_ID': `${env.user}`
+    'global.API_KEY': `"${env.apiKey}"`,
+    'global.STEAM_ID': `${env.steamId}`
   }));
 
   return config;
