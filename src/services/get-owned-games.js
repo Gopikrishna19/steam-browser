@@ -1,4 +1,4 @@
-const basePath = `https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/`;
+const basePath = 'https://api.steampowered.com/IPlayerService/GetOwnedGames/v1/';
 const header = new Headers({
   'Access-Control-Allow-Origin': '*',
   'Content-Type': 'application/json'
@@ -6,10 +6,7 @@ const header = new Headers({
 
 const options = {
   mode: 'cors',
-  header,
-  query: {
-    more: 1
-  }
+  header
 };
 
 const buildQueryString = query => Object.keys(query)
