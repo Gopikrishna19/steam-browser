@@ -1,4 +1,6 @@
+import PropTypes from 'prop-types';
 import React, {Component} from 'react';
+import {getOwnedGames} from '../services/get-owned-games';
 import {Games} from './games';
 
 export class App extends Component {
@@ -11,7 +13,7 @@ export class App extends Component {
   }
 
   componentWillMount() {
-    // getOwnedGames().then(data => this.setState({games: data.response.games}));
+    getOwnedGames(this.props.steamId, this.props.apiKey).then(data => this.setState({games: data.response.games}));
   }
 
   render() {
@@ -25,3 +27,7 @@ export class App extends Component {
 }
 
 App.displayName = 'App';
+App.propTypes = {
+  apiKey: PropTypes.string.isRequired,
+  steamId: PropTypes.string.isRequired
+};
