@@ -40,9 +40,7 @@ const config = {
 };
 
 module.exports = env => {
-
   if (env && env.dev) {
-
     config.entry.unshift('webpack-dev-server/client?http://localhost:8080/');
     config.plugins.unshift(new Webpack.HotModuleReplacementPlugin());
 
@@ -54,14 +52,12 @@ module.exports = env => {
       port: 8080,
       stats: "minimal"
     };
-
   }
 
   config.plugins.push(new Webpack.DefinePlugin({
-    API_KEY: `"${env.key}"`,
-    USER_ID: `"${env.user}"`
+    'global.API_KEY': `"${env.key}"`,
+    'global.USER_ID': `${env.user}`
   }));
 
   return config;
-
 };
