@@ -6,13 +6,13 @@ const buildQueryString = query => Object.keys(query)
   .map(k => encodeURIComponent(k) + '=' + encodeURIComponent(query[k]))
   .join('&');
 
-export const getOwnedGames = () => {
+export const getOwnedGames = (steamid, key) => {
   const query = {
     format: 'json',
-    key: global.API_KEY,
+    key,
     include_appinfo: 1,
     include_played_free_games: 1,
-    steamid: global.STEAM_ID
+    steamid
   };
   const queryString = buildQueryString(query);
   const url = `${basePath}?${queryString}`;

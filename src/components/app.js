@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-
 import React, {Component} from 'react';
 import {SetupContainer} from '../connectors/setup';
+import {GamesListContainer} from '../connectors/games-list';
 
 export class App extends Component {
   componentWillMount() {
@@ -10,8 +10,12 @@ export class App extends Component {
 
   render() {
     return (
-      this.props.apiKey && this.props.steamId ?
-        <button onClick={this.props.clearUserCredentials}>Clear</button> :
+      this.props.isReady ?
+        <section>
+          <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
+          <button onClick={this.props.getGames}>Reload Games</button>
+          <GamesListContainer/>
+        </section> :
         <SetupContainer/>
     );
   }
@@ -20,8 +24,8 @@ export class App extends Component {
 App.displayName = 'App';
 App.displayName = 'App';
 App.propTypes = {
-  apiKey: PropTypes.string.isRequired,
   clearUserCredentials: PropTypes.func.isRequired,
+  getGames: PropTypes.func.isRequired,
   getUserCredentials: PropTypes.func.isRequired,
-  steamId: PropTypes.string.isRequired
+  isReady: PropTypes.bool.isRequired
 };
