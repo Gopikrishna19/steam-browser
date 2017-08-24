@@ -3,7 +3,10 @@
 
 .header {
   @include card-2(#f0f0f0);
+  -webkit-app-region: drag;
+  align-items: center;
   display: flex;
+  height: 60px;
   left: 0;
   padding: $gutter;
   position: fixed;
@@ -12,7 +15,6 @@
   z-index: 1;
 
   h1 {
-    -webkit-app-region: drag;
     flex-grow: 1;
     font-size: 1.75em;
   }
@@ -20,11 +22,12 @@
 
 .button {
   @include button;
+  -webkit-app-region: no-drag;
   margin-left: $gutter;
 }
 
 .main {
-  margin-top: 125px;
+  margin-top: 85px;
 }
 
 .controls {
@@ -42,5 +45,6 @@
 .toggled {
   @include button;
   @include card--1($primary-color-dark);
+  -webkit-app-region: no-drag;
   color: $primary-color-text;
 }
