@@ -30,6 +30,9 @@ export class Game extends Component {
         <div className={styles.installStatus}>
           {this.state.installStatus}
         </div>
+        <div className={styles.play}>
+          <a href={`steam://rungameid/${this.props.game.appid}`}>Play</a>
+        </div>
       </li> : null;
   }
 }

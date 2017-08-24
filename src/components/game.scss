@@ -23,6 +23,18 @@
   h2 {
     font-size: 1.5em;
   }
+
+  > * {
+    margin-left: $gutter;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: $gutter;
+    }
+  }
 }
 
 .details {
@@ -32,7 +44,11 @@
   justify-content: space-around;
 }
 
-.installStatus {
+.installStatus,
+.play {
   align-self: center;
-  margin: 0 $gutter;
+}
+
+.play {
+  @include button;
 }
