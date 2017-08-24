@@ -20,7 +20,10 @@ const config = {
         loader: ExtractTextPlugin.extract([
           {
             loader: 'css-loader',
-            options: {modules: true}
+            options: {
+              localIdentName: '[local]-[hash:base64:5]',
+              modules: true
+            }
           },
           'sass-loader'
         ]),

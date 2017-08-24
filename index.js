@@ -7,7 +7,8 @@ let window;
 const createWindow = () => {
   window = new BrowserWindow({
     height: 1080,
-    width: 1920
+    width: 1920,
+    frame: false
   });
 
   window.loadURL(url.format({

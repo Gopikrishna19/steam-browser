@@ -2,30 +2,45 @@
 @import '../styles/variables';
 
 .header {
+  @include card-2(#f0f0f0);
   display: flex;
-  margin: $gutter;
+  left: 0;
+  padding: $gutter;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
 
   h1 {
+    -webkit-app-region: drag;
     flex-grow: 1;
     font-size: 1.75em;
   }
+}
+
+.button {
+  @include button;
+  margin-left: $gutter;
+}
+
+.main {
+  margin-top: 125px;
+}
+
+.controls {
+  display: flex;
+  margin-left: $gutter;
 
   button {
-    @include button;
-    margin-left: $gutter;
+    margin: 0;
+    text-align: center;
+    width: 45px;
+    display: inline-block;
   }
+}
 
-  label {
-    input {
-      display: none;
-    }
-
-    input + span {
-      @include button;
-    }
-
-    input:checked + span {
-      @include card--1($primary-color-light);
-    }
-  }
+.toggled {
+  @include button;
+  @include card--1($primary-color-dark);
+  color: $primary-color-text;
 }
