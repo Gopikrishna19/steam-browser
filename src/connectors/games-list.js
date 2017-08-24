@@ -1,4 +1,8 @@
 import {connect} from 'react-redux';
+import {getGames} from '../action-creators/get-games';
 import {GamesList} from '../components/games-list';
 
-export const GamesListContainer = connect(({games}) => ({games}))(GamesList);
+export const GamesListContainer = connect(
+  ({games}) => ({games}),
+  {getGames}
+)(GamesList);

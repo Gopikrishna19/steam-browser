@@ -13,7 +13,7 @@ export class App extends Component {
       this.props.isReady ?
         <section>
           <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
-          <button onClick={this.props.getGames}>Reload Games</button>
+          <button onClick={this.props.reloadGames}>Reload Games</button>
           <GamesListContainer/>
         </section> :
         <SetupContainer/>
@@ -25,7 +25,7 @@ App.displayName = 'App';
 App.displayName = 'App';
 App.propTypes = {
   clearUserCredentials: PropTypes.func.isRequired,
-  getGames: PropTypes.func.isRequired,
   getUserCredentials: PropTypes.func.isRequired,
-  isReady: PropTypes.bool.isRequired
+  isReady: PropTypes.bool.isRequired,
+  reloadGames: PropTypes.func.isRequired
 };

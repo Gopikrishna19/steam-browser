@@ -4,14 +4,15 @@ import thunk from 'redux-thunk';
 import reducers from './reducers';
 
 let games;
+let idb;
 let user;
 let store;
 
 export function getGameData() {
 
-  if (!user || !games) {
+  if (!idb) {
 
-    const idb = new InlineDB('game-data');
+    idb = new InlineDB('game-data');
 
     games = idb.createTable('games');
     user = idb.createTable('user');
@@ -20,6 +21,7 @@ export function getGameData() {
 
   return {
     games,
+    idb,
     user
   };
 

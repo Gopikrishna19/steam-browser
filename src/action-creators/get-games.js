@@ -1,9 +1,10 @@
 import actions from '../actions';
-import {getOwnedGames} from '../services/get-owned-games';
+import {getGameData} from '../store';
 
-export const getGames = (apiKey, steamId) =>
+export const getGames = () =>
   async dispatch => {
-    const {response: {games}} = await getOwnedGames(steamId, apiKey);
+    let games = [];
+    try { games = await getGameData().games.query(); } catch (e) { }
     dispatch({
       games,
       type: actions.SET_GAMES
