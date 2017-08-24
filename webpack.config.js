@@ -1,9 +1,10 @@
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const Webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
+const outputDir = path.join(__dirname, 'dist');
 const config = {
   entry: ['./src'],
   externals: nodeExternals(),
@@ -29,15 +30,21 @@ const config = {
   },
   output: {
     filename: 'index.js',
-    path: path.join(__dirname, 'dist')
+    path: outputDir
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: 'body',
       template: './src/index.html',
-      favicon: './src/favicon.ico'
+      favicon: './src/static/favicon.ico'
     }),
-    new ExtractTextPlugin('index.css')
+    new ExtractTextPlugin('index.css'),
+    new CopyWebpackPlugin([
+      {
+        from: './src/static/**/*',
+        ignore: ['favicon.ico']
+      }
+    ])
   ],
   target: 'node'
 };
