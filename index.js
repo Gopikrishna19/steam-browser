@@ -6,10 +6,12 @@ let window;
 
 const createWindow = () => {
   window = new BrowserWindow({
-    height: 1080,
-    width: 1920,
     frame: false,
-    icon: path.join(__dirname, 'dist', 'favicon.ico')
+    height: 1080,
+    icon: path.join(__dirname, 'dist', 'favicon.ico'),
+    minHeight: 600,
+    minWidth: 1050,
+    width: 1920
   });
 
   window.loadURL(url.format({
