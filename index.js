@@ -8,7 +8,8 @@ const createWindow = () => {
   window = new BrowserWindow({
     height: 1080,
     width: 1920,
-    frame: false
+    frame: false,
+    icon: path.join(__dirname, 'dist', 'favicon.ico')
   });
 
   window.loadURL(url.format({
