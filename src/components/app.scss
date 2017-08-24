@@ -14,4 +14,18 @@
     @include button;
     margin-left: $gutter;
   }
+
+  label {
+    input {
+      display: none;
+    }
+
+    input + span {
+      @include button;
+    }
+
+    input:checked + span {
+      @include card--1($primary-color-light);
+    }
+  }
 }

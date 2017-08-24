@@ -9,7 +9,10 @@ export class GamesList extends Component {
 
   render() {
     return (
-      <Games games={this.props.games}/>
+      <Games
+        games={this.props.games}
+        showOnlyInstalled={this.props.showOnlyInstalled}
+      />
     );
   }
 }
@@ -17,5 +20,6 @@ export class GamesList extends Component {
 GamesList.displayName = 'GamesList';
 GamesList.propTypes = {
   getGames: PropTypes.func.isRequired,
-  games: PropTypes.array.isRequired
+  games: PropTypes.array.isRequired,
+  showOnlyInstalled: PropTypes.bool.isRequired
 };

@@ -3,6 +3,12 @@ import {getGames} from '../action-creators/get-games';
 import {GamesList} from '../components/games-list';
 
 export const GamesListContainer = connect(
-  ({games}) => ({games}),
+  ({
+     games,
+     showOnlyInstalled
+   }) => ({
+    games,
+    showOnlyInstalled
+  }),
   {getGames}
 )(GamesList);

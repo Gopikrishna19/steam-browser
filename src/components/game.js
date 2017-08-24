@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {getInstallStatus} from '../services/get-install-status';
+import {getInstallStatus, INSTALLED, RETRIEVING} from '../services/get-install-status';
 import styles from './game.scss';
 
 export class Game extends Component {
@@ -8,7 +8,7 @@ export class Game extends Component {
     super();
 
     this.state = {
-      installStatus: 'Retrieving'
+      installStatus: RETRIEVING
     };
   }
 
@@ -18,7 +18,7 @@ export class Game extends Component {
   }
 
   render() {
-    return (
+    return !this.props.showOnlyInstalled || this.state.installStatus === INSTALLED ?
       <li className={styles.game}>
         <object data={`http://cdn.akamai.steamstatic.com/steam/apps/${this.props.game.appid}/capsule_231x87.jpg`} type="image/jpeg">
           <img src='src/static/game-placeholder.png' alt=""/>
@@ -30,12 +30,12 @@ export class Game extends Component {
         <div className={styles.installStatus}>
           {this.state.installStatus}
         </div>
-      </li>
-    );
+      </li> : null;
   }
 }
 
 Game.displayName = 'Game';
 Game.propTypes = {
-  game: PropTypes.object.isRequired
+  game: PropTypes.object.isRequired,
+  showOnlyInstalled: PropTypes.bool.isRequired
 };

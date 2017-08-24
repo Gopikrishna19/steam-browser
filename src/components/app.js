@@ -1,10 +1,14 @@
 import PropTypes from 'prop-types';
 import React, {Component} from 'react';
-import {SetupContainer} from '../connectors/setup';
 import {GamesListContainer} from '../connectors/games-list';
+import {SetupContainer} from '../connectors/setup';
 import styles from './app.scss';
 
 const reloadWindow = () => window.location.reload();
+
+const showOnlyInstalled = function (event) {
+  this.props.showOnlyInstalled(event.target.checked);
+};
 
 export class App extends Component {
   componentWillMount() {
@@ -17,6 +21,7 @@ export class App extends Component {
         <section>
           <header className={styles.header}>
             <h1>Games</h1>
+            <label><input type='checkbox' onChange={showOnlyInstalled.bind(this)}/><span>Show only installed</span></label>
             <button onClick={reloadWindow}>Refresh Games</button>
             <button onClick={this.props.reloadGames}>Reload Games</button>
             <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
@@ -34,5 +39,6 @@ App.propTypes = {
   clearUserCredentials: PropTypes.func.isRequired,
   getUserCredentials: PropTypes.func.isRequired,
   isReady: PropTypes.bool.isRequired,
-  reloadGames: PropTypes.func.isRequired
+  reloadGames: PropTypes.func.isRequired,
+  showOnlyInstalled: PropTypes.func.isRequired
 };

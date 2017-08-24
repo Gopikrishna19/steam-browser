@@ -10,6 +10,7 @@ export const Games = props =>
           <Game
             key={game.appid}
             game={game}
+            showOnlyInstalled={props.showOnlyInstalled}
           />
       )
     }
@@ -17,5 +18,6 @@ export const Games = props =>
 
 Games.displayName = 'Games';
 Games.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.array.isRequired,
+  showOnlyInstalled: PropTypes.bool.isRequired
 };

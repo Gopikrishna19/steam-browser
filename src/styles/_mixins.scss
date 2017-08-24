@@ -49,6 +49,7 @@
   @include paint-button($primary-text-color);
   border: none;
   padding: 10px 15px;
+  background-color: $primary-color-light;
 
   &:hover {
     @include card-2($primary-color);
