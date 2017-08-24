@@ -4,6 +4,8 @@ import {SetupContainer} from '../connectors/setup';
 import {GamesListContainer} from '../connectors/games-list';
 import styles from './app.scss';
 
+const reloadWindow = () => window.location.reload();
+
 export class App extends Component {
   componentWillMount() {
     this.props.getUserCredentials();
@@ -15,8 +17,9 @@ export class App extends Component {
         <section>
           <header className={styles.header}>
             <h1>Games</h1>
-            <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
+            <button onClick={reloadWindow}>Refresh Games</button>
             <button onClick={this.props.reloadGames}>Reload Games</button>
+            <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
           </header>
           <GamesListContainer/>
         </section> :
