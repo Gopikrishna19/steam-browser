@@ -37,3 +37,27 @@
   @include card-0($bg-color);
   box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
+
+@mixin paint-button($color: null) {
+  display: inline-block;
+  @if ($color) {
+    color: $color;
+  }
+}
+
+@mixin button() {
+  @include paint-button($primary-text-color);
+  border: none;
+  padding: 10px 15px;
+
+  &:hover {
+    @include card-2($primary-color);
+    @include paint-button($primary-color-text);
+  }
+
+  &:active {
+    @include card-1($primary-color-dark);
+    @include paint-button;
+    transition: all .2s;
+  }
+}

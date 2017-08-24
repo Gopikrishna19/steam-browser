@@ -1,15 +1,7 @@
-@import '../styles/variables';
 @import '../styles/mixins';
+@import '../styles/variables';
 
-$gutter: 25px;
 $input-width: 350px;
-
-@mixin button($color: null) {
-  display: inline-block;
-  @if ($color) {
-    color: $color;
-  }
-}
 
 .form {
   align-items: center;
@@ -51,18 +43,5 @@ $input-width: 350px;
 
 .button {
   @include card-0;
-  @include button($primary-text-color);
-  border: none;
-  padding: 10px 15px;
-
-  &:hover {
-    @include card-2($primary-color);
-    @include button($primary-color-text);
-  }
-
-  &:active {
-    @include card-1($primary-color-dark);
-    @include button;
-    transition: all .2s;
-  }
+  @include button;
 }

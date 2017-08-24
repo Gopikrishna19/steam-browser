@@ -1,0 +1,17 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.header {
+  display: flex;
+  margin: $gutter;
+
+  h1 {
+    flex-grow: 1;
+    font-size: 1.75em;
+  }
+
+  button {
+    @include button;
+    margin-left: $gutter;
+  }
+}

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, {Component} from 'react';
 import {SetupContainer} from '../connectors/setup';
 import {GamesListContainer} from '../connectors/games-list';
+import styles from './app.scss';
 
 export class App extends Component {
   componentWillMount() {
@@ -12,8 +13,11 @@ export class App extends Component {
     return (
       this.props.isReady ?
         <section>
-          <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
-          <button onClick={this.props.reloadGames}>Reload Games</button>
+          <header className={styles.header}>
+            <h1>Games</h1>
+            <button onClick={this.props.clearUserCredentials}>Update Credentials</button>
+            <button onClick={this.props.reloadGames}>Reload Games</button>
+          </header>
           <GamesListContainer/>
         </section> :
         <SetupContainer/>

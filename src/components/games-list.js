@@ -9,10 +9,7 @@ export class GamesList extends Component {
 
   render() {
     return (
-      <div>
-        <h1>My Steam Games!!</h1>
-        <Games games={this.props.games}/>
-      </div>
+      <Games games={this.props.games}/>
     );
   }
 }
