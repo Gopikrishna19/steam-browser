@@ -46,11 +46,19 @@
   }
 }
 
-.installStatus,
-.play {
-  align-self: center;
-}
-
 .play {
   @include button;
+  align-self: center;
+  font-size: 2em;
+  padding: 10px;
+
+  &,
+  &:hover,
+  &:active {
+    border-radius: 50%;
+  }
+
+  &:global(.arrow_downward) {
+    color: $darker;
+  }
 }

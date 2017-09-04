@@ -62,3 +62,10 @@
     transition-duration: .2s;
   }
 }
+
+
+@mixin yo() {
+  .blah {
+    color: blue;
+  }
+}

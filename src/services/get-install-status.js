@@ -1,8 +1,8 @@
 import {exec} from 'child_process';
 
-export const INSTALLED = 'Installed';
-export const NOT_INSTALLED = 'Not Installed';
-export const RETRIEVING = 'Retrieving';
+export const INSTALLED = 'play_arrow';
+export const NOT_INSTALLED = 'arrow_downward';
+export const RETRIEVING = 'hourglass_full';
 
 export const getInstallStatus = appId => new Promise(
   resolve => exec(

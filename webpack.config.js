@@ -28,6 +28,11 @@ const config = {
           'sass-loader'
         ]),
         test: /\.s?css$/
+      },
+      {
+        exclude: /node_modules/,
+        loader: 'url-loader?limit=1&name=[name].[ext]',
+        test: /\.(woff|woff2|ttf|svg|eot)$/
       }
     ]
   },

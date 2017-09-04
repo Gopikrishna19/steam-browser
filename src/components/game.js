@@ -27,11 +27,10 @@ export class Game extends Component {
           <h2>{this.props.game.name}</h2>
           <p>Play time: {this.props.game.playtime_forever}</p>
         </div>
-        <div className={styles.installStatus}>
-          {this.state.installStatus}
-        </div>
-        <div className={styles.play}>
-          <a href={`steam://rungameid/${this.props.game.appid}`}>Play</a>
+        <div className={`${styles.play} ${this.state.installStatus}`}>
+          <a href={`steam://rungameid/${this.props.game.appid}`}>
+            <i className="material-icon">{this.state.installStatus}</i>
+          </a>
         </div>
       </li> : null;
   }

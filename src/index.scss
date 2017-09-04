@@ -1,4 +1,14 @@
+@import 'font/material-icons';
 @import 'styles/variables';
+
+:global {
+  .material-icon {
+    font-family: 'Material Icons';
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
 
 html,
 body {
