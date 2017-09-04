@@ -46,15 +46,34 @@ const config = {
       template: './src/index.html',
       favicon: './src/static/favicon.ico'
     }),
-    new ExtractTextPlugin('index.css'),
-    new CopyWebpackPlugin([
-      {
-        from: './src/static/**/*',
-        ignore: ['favicon.ico']
-      }
-    ])
+    new ExtractTextPlugin('index.css')
   ],
   target: 'node'
 };
 
-module.exports = env => config;
+module.exports = () => {
+
+  const copyList = [
+    {
+      from: './src/static/**/*',
+      ignore: ['favicon.ico']
+    }
+  ];
+
+  if (process.env.MODE.trim() === 'prod') {
+    copyList.push(
+      {from: './package.json'},
+      {from: './main.js'},
+      {
+        from: './.steam-browser-prod-rc',
+        to: './.steam-browser-rc',
+        toType: 'file'
+      }
+    );
+  }
+
+  config.plugins.push(new CopyWebpackPlugin(copyList));
+
+  return config;
+
+};

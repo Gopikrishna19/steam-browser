@@ -1,10 +1,11 @@
 {
   "name": "steam-browser",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Custom steam apps organizer",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "build": "webpack",
+    "deploy": "set MODE=prod && webpack && electron-packager dist SteamBrowser --platform=win32 --arch=x64 --overwrite --icon=dist/favicon.ico",
     "eslint": "eslint . --ignore-path .gitignore",
     "start": "set MODE=dev && concurrently --kill-others \"webpack --watch\" \"electron .\""
   },
@@ -19,6 +20,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.5",
     "electron": "^1.7.5",
+    "electron-packager": "^9.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^0.11.2",
     "html-webpack-plugin": "^2.30.1",
