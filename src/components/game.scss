@@ -47,16 +47,12 @@
 }
 
 .play {
-  @include button;
+  @include button {
+    border-radius: 50%;
+  }
   align-self: center;
   font-size: 2em;
   padding: 10px;
-
-  &,
-  &:hover,
-  &:active {
-    border-radius: 50%;
-  }
 
   &:global(.arrow_downward) {
     color: $darker;

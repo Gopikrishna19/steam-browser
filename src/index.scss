@@ -1,13 +1,9 @@
 @import 'font/material-icons';
 @import 'styles/variables';
+@import 'styles/mixins';
 
-:global {
-  .material-icon {
-    font-family: 'Material Icons';
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
-    text-rendering: optimizeLegibility;
-  }
+:global .material-icon {
+  @include material-icon;
 }
 
 html,

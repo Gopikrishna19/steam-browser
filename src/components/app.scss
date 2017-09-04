@@ -1,6 +1,18 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
+@mixin control-button {
+  @include button {
+    @content
+  }
+  $button-size: 45px;
+  text-align: center;
+  width: $button-size;
+  height: $button-size;
+  display: inline-block;
+  -webkit-app-region: no-drag;
+}
+
 .container {
   height: 100%;
   display: flex;
@@ -13,7 +25,7 @@
   align-items: center;
   display: flex;
   height: 60px;
-  padding: $gutter;
+  padding: 0 $gutter;
   position: relative;
   z-index: 1;
 
@@ -24,9 +36,7 @@
 }
 
 .button {
-  @include button;
-  -webkit-app-region: no-drag;
-  margin-left: $gutter;
+  @include control-button;
 }
 
 .main {
@@ -36,19 +46,69 @@
 
 .controls {
   display: flex;
-  margin-left: $gutter;
+}
 
-  button {
-    margin: 0;
-    text-align: center;
-    width: 45px;
-    display: inline-block;
+.appMenuContainer {
+  position: relative;
+}
+
+.appMenuButton {
+  align-items: center;
+  @include control-button {
+    display: flex;
+  }
+
+  & + input {
+    display: none;
+
+    &:checked ~ .appMenu {
+      display: flex;
+    }
   }
 }
 
-.toggled {
-  @include button;
-  @include card--1;
-  background-color: $dark;
-  -webkit-app-region: no-drag;
+.appMenu {
+  @include card-3;
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  padding: 10px 0;
+  right: 0;
+  top: 100%;
+
+  button {
+    @include button {
+      display: flex;
+      box-shadow: none;
+    }
+    align-items: center;
+    text-align: left;
+    white-space: nowrap;
+
+    &:before {
+      $icon-size: 1em;
+      @include material-icon;
+      color: $darker;
+      content: '';
+      display: inline-block;
+      text-align: center;
+      height: $icon-size;
+      width: $icon-size;
+      margin-right: 10px;
+    }
+
+    &.toggled:before {
+      color: inherit;
+      content: 'done';
+    }
+
+    &.sync:before {
+      content: 'sync'
+    }
+
+    &.clear:before {
+      content: 'clear'
+    }
+  }
 }
+

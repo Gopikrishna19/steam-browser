@@ -42,7 +42,7 @@
   display: inline-block;
 }
 
-@mixin button() {
+@mixin button {
   @include paint-button;
   border: none;
   padding: 10px 15px;
@@ -61,11 +61,17 @@
     background-color: $dark;
     transition-duration: .2s;
   }
+
+  &,
+  &:hover,
+  &:active {
+    @content;
+  }
 }
 
-
-@mixin yo() {
-  .blah {
-    color: blue;
-  }
+@mixin material-icon {
+  font-family: 'Material Icons';
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
