@@ -64,8 +64,22 @@
 
   &,
   &:hover,
-  &:active {
-    @content;
+  &:active { @content; }
+}
+
+@mixin input($width: auto) {
+  border: none;
+  border-bottom: 2px solid $light;
+  padding: 10px 0;
+  width: $width;
+  background: none;
+
+  &:focus {
+    border-color: $lightest;
+  }
+
+  &::placeholder {
+    color: $divider;
   }
 }
 

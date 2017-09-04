@@ -2,15 +2,13 @@
 @import '../styles/variables';
 
 @mixin control-button {
-  @include button {
-    @content
-  }
   $button-size: 45px;
+  @include button { @content; }
+  -webkit-app-region: no-drag;
   text-align: center;
   width: $button-size;
   height: $button-size;
   display: inline-block;
-  -webkit-app-region: no-drag;
 }
 
 .container {
@@ -32,6 +30,42 @@
   h1 {
     flex-grow: 1;
     font-size: 1.75em;
+  }
+}
+
+.searchInput {
+  $width: 45px;
+  -webkit-app-region: no-drag;
+  align-items: center;
+  display: flex;
+  position: relative;
+  min-width: $width;
+  transition: width .3s ease-in;
+
+  i {
+    position: absolute;
+    right: calc(#{$width} / 2);
+    transform: translateX(50%);
+  }
+
+  input {
+    @include input(0);
+    transition: all .3s ease-in;
+
+    &:valid,
+    &:focus {
+      width: 250px + $width;
+      padding-left: 10px;
+      padding-right: $width;
+
+      + i {
+        pointer-events: none;
+      }
+    }
+
+    &:not(:focus)::placeholder {
+      color: transparent;
+    }
   }
 }
 

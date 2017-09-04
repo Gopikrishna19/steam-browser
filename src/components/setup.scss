@@ -1,8 +1,6 @@
 @import '../styles/mixins';
 @import '../styles/variables';
 
-$input-width: 350px;
-
 .form {
   align-items: center;
   display: flex;
@@ -19,21 +17,9 @@ $input-width: 350px;
   padding: 25px;
 
   input[type=text] {
-    border: none;
-    border-bottom: 2px solid $light;
-    padding: 10px 0;
+    @include input(350px);
     margin-bottom: $gutter;
-    width: $input-width;
-    background: none;
     text-align: center;
-
-    &:focus {
-      border-color: $lightest;
-    }
-
-    &::-webkit-input-placeholder {
-      color: $divider;
-    }
   }
 }
 

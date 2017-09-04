@@ -7,23 +7,21 @@ const closeAfter = (context, action) => () => {
   context.setState({open: false});
 };
 
+const toggleMenu = function () {
+  this.setState({open: !this.state.open});
+};
+
 export class AppMenu extends Component {
   constructor() {
     super();
 
     this.state = {open: false};
-
-    this.openMenu = this.openMenu.bind(this);
-  }
-
-  openMenu() {
-    this.setState({open: true});
   }
 
   render() {
     return (
       <div className={styles.appMenuContainer}>
-        <button className={styles.appMenuButton} onClick={this.openMenu}>
+        <button className={styles.appMenuButton} onClick={toggleMenu.bind(this)}>
           <i className="material-icon">menu</i>
         </button>
         <input type="checkbox" checked={this.state.open}/>

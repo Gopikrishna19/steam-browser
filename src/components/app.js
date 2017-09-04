@@ -5,6 +5,7 @@ import {Menu} from '../connectors/menu';
 import {SetupContainer} from '../connectors/setup';
 import {AppControls} from './app-controls';
 import styles from './app.scss';
+import {SearchInput} from './search-input';
 
 export class App extends Component {
   componentWillMount() {
@@ -17,6 +18,7 @@ export class App extends Component {
         <section className={styles.container}>
           <header className={styles.header}>
             <h1>Games</h1>
+            <SearchInput onChange={this.props.updateSearchString} value={this.props.searchString}/>
             <Menu/>
             <AppControls/>
           </header>
@@ -38,5 +40,7 @@ export class App extends Component {
 App.displayName = 'App';
 App.propTypes = {
   getUserCredentials: PropTypes.func.isRequired,
-  isReady: PropTypes.bool.isRequired
+  isReady: PropTypes.bool.isRequired,
+  searchString: PropTypes.string.isRequired,
+  updateSearchString: PropTypes.func.isRequired
 };
