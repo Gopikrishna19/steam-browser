@@ -1,10 +1,25 @@
-$primary-color-dark: #5d4037;
-$primary-color: #795548;
-$primary-color-light: #d7ccc8;
-$primary-color-text: #fff;
-$accent-color: #607d8b;
-$primary-text-color: #212121;
-$secondary-text-color: #757575;
-$divider-color: #bdbdbd;
+$_000: #eceff1;
+$_100: #cfd8dc;
+$_200: #b0bec5;
+$_300: #90a4ae;
+$_400: #78909c;
+$_500: #607d8b;
+$_600: #546e7a;
+$_700: #455a64;
+$_800: #37474f;
+$_900: #263238;
+
+
+$lightest: $_200;
+$lighter: $_300;
+$light: $_400;
+$normal: $_500;
+$dark: $_600;
+$darker: $_700;
+$darkest: $_800;
+
+$black: $_900;
+$white: $_000;
 
 $gutter: 25px;
+$divider: $darkest;

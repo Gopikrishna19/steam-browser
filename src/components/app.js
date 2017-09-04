@@ -19,6 +19,13 @@ const showOnlyInstalled = function () {
   this.props.toggleOnlyInstalled(!this.props.showOnlyInstalled);
 };
 
+const Controls = () =>
+  <div className={styles.controls}>
+    <button className={styles.button} onClick={minimizeWindow}>&#x0005F;</button>
+    <button className={styles.button} onClick={restoreWindow}>&#x025FB;</button>
+    <button className={styles.button} onClick={closeWindow}>&#x000D7;</button>
+  </div>;
+
 export class App extends Component {
   componentWillMount() {
     this.props.getUserCredentials();
@@ -27,7 +34,7 @@ export class App extends Component {
   render() {
     return (
       this.props.isReady ?
-        <section>
+        <section className={styles.container}>
           <header className={styles.header}>
             <h1>Games</h1>
             <button className={this.props.showOnlyInstalled ? styles.toggled : styles.button} onClick={showOnlyInstalled.bind(this)}>
@@ -36,17 +43,19 @@ export class App extends Component {
             <button className={styles.button} onClick={reloadWindow}>Refresh Games</button>
             <button className={styles.button} onClick={this.props.reloadGames}>Reload Games</button>
             <button className={styles.button} onClick={this.props.clearUserCredentials}>Update Credentials</button>
-            <div className={styles.controls}>
-              <button className={styles.button} onClick={minimizeWindow}>&#x0005F;</button>
-              <button className={styles.button} onClick={restoreWindow}>&#x025FB;</button>
-              <button className={styles.button} onClick={closeWindow}>&#x000D7;</button>
-            </div>
+            <Controls/>
           </header>
           <main className={styles.main}>
             <GamesListContainer/>
           </main>
         </section> :
-        <SetupContainer/>
+        <section className={styles.container}>
+          <header className={styles.header}>
+            <h1>Games</h1>
+            <Controls/>
+          </header>
+          <SetupContainer/>
+        </section>
     );
   }
 }

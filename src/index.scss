@@ -1,16 +1,26 @@
+@import 'styles/variables';
+
 html,
 body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background-color: #f0f0f0;
+}
+
+body,
+main#content {
+  background-color: $dark;
+  color: $white;
   font-family: sans-serif;
+  height: 100%;
 }
 
 * {
+  color: inherit;
   box-sizing: border-box;
   margin: 0;
   font-size: 100%;
+  font-weight: normal;
   outline: none;
   user-select: none;
 }
@@ -28,4 +38,15 @@ a:hover,
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb:window-inactive {
+  background-color: $black;
+  border-radius: 5px;
 }

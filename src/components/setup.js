@@ -31,7 +31,6 @@ export class Setup extends Component {
   render() {
     return (
       <section className={styles.form}>
-        <h1>Setup</h1>
         <div className={styles.formContainer}>
           <input
             type="text"
